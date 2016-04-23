@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="个人博客,lightcolors.cn,技术分享,技术积累">
+    <meta name="author" content="jiangwei.john@foxmail.com">
+    <meta name="description" content="这是一个个人博客,应用node开发,一个平时记录自己工作积累的博客">
+    <meta name="generator" content="www.lightcolors.cn">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="stylesheets/base.css">
+    <link rel="stylesheet" href="stylesheets/index.css">
+    <link rel="icon" href="images/logo.icon.png">
+    <!--IE8 下样式调整-->
+    <!--[if lt IE 9]>
+    <style>
+        .btn {
+            color: #F35E0E !important;
+        }
+    </style>
+    <![endif]-->
+    <script type="text/javascript" src="http://libs.useso.com/js/jquery/1.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="javascripts/account.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".nav a").each(function () {
+                $this = $(this);
+                if ($this[0].href == String(window.location)) {
+                    $this.addClass("current");
+                }
+            });
+        });
+    </script>
+</head>
+<body class="">
+<div class="header-index">
+    <div class="header-container">
+        <div class="logo"><a href="/" class="logo-container" title="LOGO"><span>Lightcolors</span></a></div>
+        <% if(user){ %>
+        <div class="login-success">
+            <span>欢迎您:<s><%= user.username %></s></span>
+            <a class="btn" href="/logout">退出</a>
+        </div>
+        <% }else { %>
+        <div class="login-btn">
+            <a class="btn" href="/login">登录</a>
+        </div>
+        <% } %>
+        <ul class="nav">
+            <li><a href="/" class="" title="首页">首页</a></li>
+            <li><a href="/blog-container" title="博客">博客</a></li>
+            <% if(user){ %>
+            <li><a href="/post" title="发表">发表</a></li>
+            <% } %>
+            <li><a href="/about" title="关于我">关于我</a></li>
+        </ul>
+    </div>
+</div>

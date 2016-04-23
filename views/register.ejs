@@ -1,0 +1,42 @@
+<% include header.ejs %>
+<div class="login-reg">
+    <div class="login-reg-title"><%= title %></div>
+    <form class="form" name="login" method="post">
+        <table cellpadding="0" cellspacing="0" border="0">
+            <tbody>
+            <tr>
+                <td class="form-name">Name:</td>
+                <td class="form-input"><input name="username" type="text" placeholder="name"></td>
+                <td class="form-tips"><span class="alert-name alert-name-danger" style="display: none;"></span></td>
+            </tr>
+            <tr>
+                <td class="form-name">Password:</td>
+                <td class="form-input"><input name="password" type="password" placeholder="password"></td>
+                <td class="form-tips"><span class="alert-password alert-password-danger"
+                                            style="display: none;"></span></td>
+            </tr>
+            <tr>
+                <td class="form-name">Password-repeat:</td>
+                <td class="form-input"><input id="password1" name="password-re" type="password"
+                                              placeholder="password-repeat"></td>
+                <td class="form-tips"><span class="alert-password-re alert-password-re-danger"
+                                            style="display: none;"></span></td>
+            </tr>
+            <tr>
+                <td class="form-name">Email:</td>
+                <td class="form-input"><input name="email" type="email" placeholder="Email"></td>
+                <td class="form-tips"><span class="alert-email alert-email-danger" style="display: none;"></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="form-btn" colspan="2"><input class="btn" value="提交" type="submit"></td>
+            </tr>
+            </tbody>
+        </table>
+        <span class="alert alert-danger" style="display: none;"></span>
+        <span class="alert alert-success" style="display: none;"></span>
+    </form>
+    <div class="login-to-reg">已有账户？<a href="/login">请登录</a></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<% include header.ejs %>
+<div class="login-reg">
+    <div class="login-reg-title"><%= title %></div>
+    <form class="form" name="login" method="post" action="register.ejs">
+        <table cellpadding="0" cellspacing="0" border="0">
+            <tbody>
+                <tr>
+                    <td class="form-name">标题:</td>
+                    <td class="form-input"><input name="title" type="text" placeholder="title">
+                </tr>
+                <tr>
+                    <td class="form-name">分类:</td>
+                    <td class="form-input"><input name="category" type="text" placeholder="category"></td>
+                </tr>
+                <tr>
+                    <td class="form-name">简介:</td>
+                    <td class="form-input"><input name="intro" type="text" placeholder="intro"></td>
+                </tr>
+                <tr>
+                    <td class="form-name">内容:</td>
+                    <td class="form-input"><input name="post" type="text" placeholder="post"></td>
+                </tr>
+                <tr>
+                    <td class="form-btn" colspan="2"><input class="btn" type="submit" value="提交"></td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+</body>
+</html>
