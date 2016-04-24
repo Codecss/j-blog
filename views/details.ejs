@@ -6,13 +6,13 @@
 <div class="blog">
     <div class="blog-container">
         <!--文章列表 start-->
-        <div class="article-left">
+        <div class="article-left" style="float: none;width:100%;max-width: 1000px;margin: auto">
             <!--1-->
             <div class="article-list">
                 <!--标题-->
-                <div class="article-list-title"><h2><%= post.title %></h2></div>
+                <div class="article-list-title"><h2 style="text-align: center"><%= post.title %></h2></div>
                 <!--提示信息-->
-                <div class="article-list-tips">
+                <div class="article-list-tips" style="text-align: center">
                     <ul>
                         <li><span>日期：</span><span><%= post.date %></span></li>
                         <li><span>作者：</span><span><%= post.name %></span></li>
@@ -22,19 +22,20 @@
                 </div>
                 <!--内容-->
                 <div class="article-list-info">
-                    <span><%= post.post %></span>
+                    <span class="default-css"><%- post.post %></span>
                 </div>
-            <div class="hr-40"></div>
-            <div class="underline"></div>
-            <div class="hr-40"></div>
-            <!-- UY BEGIN -->
-            <div id="uyan_frame"></div>
-            <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2095106"></script>
-            <!-- UY END -->
+                <div class="hr-40"></div>
+                <div class="underline"></div>
+                <div class="hr-40"></div>
+                <!-- UY BEGIN -->
+                <div id="uyan_frame"></div>
+                <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2095106"></script>
+                <!-- UY END -->
             </div>
         </div>
         <!--文章列表 end-->
     </div>
 </div>
-
+<script type="text/javascript" src="http://libs.useso.com/js/jquery/1.4.1/jquery.min.js"></script>
+<script type="text/javascript" src="/javascripts/account.js"></script>
 <% include footer.ejs %>

@@ -162,7 +162,6 @@ router.get('/post', function (req, res, next) {
         title: '发表',
         user: req.session.user
     });
-    console.log(req.session.user.power)
 });
 router.post('/post', checkLogin);
 router.post('/post', function (req, res, next) {
@@ -181,6 +180,24 @@ router.post('/post', function (req, res, next) {
         }
         res.redirect('/blogs');//发表成功跳转到主页
     });
+});
+/*后台管理*/
+router.get('/edit', checkLogin);
+router.get('/edit', checkPermissions);
+router.get('/edit', function (req, res, next) {
+    Post.getAll(function (err, posts) {
+        res.render('edit', {
+            title: '后台管理',
+            posts: posts,
+            user: req.session.user
+        });
+    });
+});
+router.post('/edit', checkLogin);
+router.post('/edit', function (req, res, next) {
+});
+router.use(function (req, res) {
+    res.render("404");
 });
 function checkLogin(req, res, next) {
     if (!req.session.user) {

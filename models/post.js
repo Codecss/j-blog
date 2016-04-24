@@ -72,7 +72,7 @@ Post.getOne = function (_id, callback) {
             console.log(err);
         }
         callback(null, doc)
-    })
+    }).update({$inc: {"pv": 1}},function(err){})
 
 };
 Post.getTen = function (index, callback) {

@@ -6,7 +6,7 @@ function signup() {
     var password = $('[name=password]').val();
     var password1 = $('#password1').val();
 
-    $.post('',$('.form').serialize())
+    $.post('', $('.form').serialize())
         .done(info)
         .fail(function (res) {
             warn('.alert-name', (res.responseText));
@@ -76,3 +76,18 @@ function validateEmail(email) {
     var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(email);
 }
+(function () {
+    var i = $(window).height(), o = $("<div>").addClass("backToTop").hide();
+
+    $("body").append(o);
+    $(".backToTop").on("click", function () {
+        $("html,body").animate({
+            scrollTop: 0
+        },500);
+    });
+    $(window).on("resize", function () {
+        i = $(window).height()
+    }).on("scroll", function () {
+        $(this).scrollTop() > i ? $(".backToTop").show() : $(".backToTop").hide()
+    });
+})();

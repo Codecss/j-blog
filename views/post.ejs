@@ -1,35 +1,59 @@
 <% include header.ejs %>
-<div class="login-reg">
+<link rel="stylesheet" type="text/css" href="simditor/styles/font-awesome.css"/>
+<link rel="stylesheet" type="text/css" href="simditor/styles//simditor.css"/>
+
+<div class="post-content">
     <div class="login-reg-title"><%= title %></div>
-    <form class="form" name="post" method="post" action="">
+    <form class="form-post" name="post" method="post" action="">
         <table cellpadding="0" cellspacing="0" border="0">
             <tbody>
-                <tr>
-                    <td class="form-name">标题:</td>
-                    <td class="form-input"><input name="title" type="text" placeholder="title">
-                </tr>
-                <tr>
-                    <td class="form-name">分类:</td>
-                    <td class="form-input"><input name="category" type="text" placeholder="category"></td>
-                </tr>
-                <tr>
-                    <td class="form-name">简介:</td>
-                    <td class="form-input"><input name="intro" type="text" placeholder="intro"></td>
-                </tr>
-                <tr>
-                    <td class="form-name">内容:</td>
-                    <td class="form-input"><input name="post" type="text" placeholder="post"></td>
-                </tr>
-                <tr>
-                    <td class="form-btn" colspan="2"><input class="btn" type="submit" value="提交"></td>
-                </tr>
+            <tr>
+                <td class="form-name">标题:</td>
+                <td class="form-input"><input name="title" type="text" placeholder="title">
+            </tr>
+            <tr>
+                <td class="form-name">分类:</td>
+                <td class="form-input"><input name="category" type="text" placeholder="category"></td>
+            </tr>
+            <tr>
+                <td class="form-name">简介:</td>
+                <td class="form-input"><input name="intro" type="text" placeholder="intro"></td>
+            </tr>
+            <tr>
+                <td class="form-name" style="vertical-align: top"> 内容:</td>
+                <td class="form-input"><textarea id="editor" placeholder="这里输入内容" autofocus name="post"></textarea></td>
+            </tr>
+            <tr>
+                <td class="form-btn" colspan="2"><input class="btn" type="submit" value="提交"></td>
+            </tr>
             </tbody>
         </table>
     </form>
 </div>
 <script type="text/javascript" src="http://libs.useso.com/js/jquery/1.4.1/jquery.min.js"></script>
 <script type="text/javascript" src="javascripts/account.js"></script>
+<script type="text/javascript" src="simditor/scripts/js/jquery.min.js"></script>
+<script type="text/javascript" src="simditor/scripts/js/module.js"></script>
+<script type="text/javascript" src="simditor/scripts/js/uploader.js"></script>
+<script type="text/javascript" src="simditor/scripts/js/simditor.js"></script>
 <script type="text/javascript">
+
+//    var toolbar = ['title', 'bold', 'italic', 'underline', 'strikethrough', 'fontScale', 'color', '|', 'ol', 'ul', 'blockquote', 'code', 'table', '|', 'link', 'image', 'hr', '|', 'indent', 'outdent', 'alignment'];
+    var editor = new Simditor({
+        textarea: $('#editor'),
+        placeholder: '这里输入内容....',
+        defaultImage: 'simditor/images/image.png',
+        params: {},
+        upload: false,
+        tabIndent: true,
+        toolbar: true,
+        toolbar: toolbar,
+        toolbarFloat: true,
+        toolbarFloatOffset: 0,
+        toolbarHidden: false,
+        pasteImage: false,
+        cleanPaste: false
+    })
     $(document).ready(function () {
         $(".nav a").each(function () {
             $this = $(this);
