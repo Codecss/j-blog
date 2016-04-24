@@ -15,8 +15,8 @@
                     <ul>
                         <li><span>日期：</span><span><%= post.date %></span></li>
                         <li><span>作者：</span><span><%= post.name %></span></li>
-                        <li><span>类型：</span><span><%= post.category %></span></li>
-                        <!--<li><span>浏览：</span><span>121</span></li>-->
+                        <li><span>标签：</span><span><%= post.category %></span></li>
+                        <li><span>浏览：</span><span><%= post.pv %></span></li>
                     </ul>
                 </div>
                 <!--内容-->
@@ -25,7 +25,7 @@
                 </div>
                 <!--btn-->
                 <div class="article-btn">
-                    <a href="" target="_blank">MORE</a>
+                    <a href="blogs/<%- post._id %>" target="_blank">MORE</a>
                 </div>
             </div>
             <div class="underline"></div>
@@ -39,40 +39,30 @@
             <div class="article-later">
                 <dl>
                     <dt>最新文章</dt>
-                    <dd><a href="javascript:;" target="_blank">HTML5</a></dd>
-                    <dd><a href="javascript:;" target="_blank">CSS</a></dd>
-                    <dd><a href="javascript:;" target="_blank">Javascript</a></dd>
-                    <dd><a href="javascript:;" target="_blank">node</a></dd>
-                    <dd><a href="javascript:;" target="_blank">MongoDb</a></dd>
+                    <% posts.forEach(function (post, index) { %>
+                    <dd><a href="blogs/<%- post._id %>"><%= post.title %></a></dd>
+                    <% }) %>
                 </dl>
             </div>
             <!--最新文章 end-->
+            <div class="underline"></div>
+
             <div class="hr-20"></div>
             <!--类型标签页 start-->
             <div class="article-type">
                 <dl>
                     <dt>标签</dt>
-                    <dd><a href="javascript:;">HTML5</a></dd>
-                    <dd><a href="javascript:;">CSS</a></dd>
-                    <dd><a href="javascript:;">Javascript</a></dd>
-                    <dd><a href="javascript:;">node</a></dd>
-                    <dd><a href="javascript:;">MongoDb</a></dd>
-                    <dd><a href="javascript:;">HTML5</a></dd>
-                    <dd><a href="javascript:;">CSS</a></dd>
-                    <dd><a href="javascript:;">Javascript</a></dd>
-                    <dd><a href="javascript:;">node</a></dd>
-                    <dd><a href="javascript:;">MongoDb</a></dd>
-                    <dd><a href="javascript:;">HTML5</a></dd>
-                    <dd><a href="javascript:;">CSS</a></dd>
-                    <dd><a href="javascript:;">Javascript</a></dd>
-                    <dd><a href="javascript:;">node</a></dd>
-                    <dd><a href="javascript:;">MongoDb</a></dd>
+                    <% posts.forEach(function (post, index) { %>
+                    <dd><a href=""><%= post.category %></a></dd>
+                    <% }) %>
                 </dl>
             </div>
             <!--类型标签页 end-->
+            <div class="underline"></div>
+
             <div class="hr-20"></div>
             <!--预留广告位 start-->
-            <div class="article-ad">
+            <div class="article-ad hide">
                 广告
             </div>
             <!--预留广告位 end-->

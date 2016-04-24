@@ -11,7 +11,11 @@ var UserSchema = new Schema({
         unique: true
     },
     password: String,
-    email: String
+    email: String,
+    power: {
+        type: Number,
+        default: 0
+    }
 });
 
 var userModel = mongoose.model('User', UserSchema);
@@ -20,6 +24,7 @@ function User(user) {
     this.username = user.username;
     this.password = user.password;
     this.email = user.email;
+    this.power = user.power;
 }
 
 User.prototype.save = function (callback) {
@@ -30,6 +35,7 @@ User.prototype.save = function (callback) {
         username: this.username,
         password: this.password,
         email: this.email,
+        power: this.power,
         head: head
     };
 

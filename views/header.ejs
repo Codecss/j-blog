@@ -21,21 +21,7 @@
         }
     </style>
     <![endif]-->
-    <script type="text/javascript" src="http://libs.useso.com/js/jquery/1.4.1/jquery.min.js"></script>
-    <script type="text/javascript" src="javascripts/account.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $(".nav a").each(function () {
-                $this = $(this);
-                if ($this[0].href == String(window.location)) {
-                    $this.addClass("current");
-                }
-                if ($this[0].href === '/') {
-                    alert(1)
-                }
-            });
-        });
-    </script>
+
 </head>
 <body>
 <div class="header">
@@ -53,7 +39,7 @@
         <% } %>
         <ul class="nav">
             <li><a href="/" class="" title="首页">首页</a></li>
-            <li><a href="/blog-container" title="博客">博客</a></li>
+            <li><a href="/blogs" title="博客">博客</a></li>
             <% if(user){ %>
             <% if (user.power > 50){ %>
             <li><a href="/post" title="发表">发表</a></li>

@@ -11,9 +11,13 @@ var crypto = require('crypto');
 var session = require('express-session');
 var mongoose = require('mongoose');
 var MongoStore = require('connect-mongo')(session);
-var dbUrl = 'mongodb://localhost/node_demo';
-var db = mongoose.connect(dbUrl);
-
+var dbUrl = 'mongodb://localhost/blog';
+mongoose.connect(dbUrl);
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+    console.log('success')
+});
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
@@ -34,11 +38,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //session配置
 app.use(session({
-    secret: 'node_demo',
-    key: 'blog',
+    secret: 'username',
+    key: 'user',
     resave: false,
     saveUninitialized: true,
-    cookie: {maxAge: 1000 * 60 * 60 * 24 * 30},//30 days
+    cookie: {maxAge: 1000 * 60 * 60 * 24 * 7},//7 days
     store: new MongoStore({
         url: dbUrl,
         collection: 'sessions'

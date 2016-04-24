@@ -23,11 +23,11 @@ router.get('/about', function (req, res, next) {
 });
 
 /*博客list*/
-router.get('/blog-container', function (req, res, next) {
+router.get('/blogs', function (req, res, next) {
     var page = parseInt(req.query.page) || 2;
     console.log(page);
-    Post.getTen(page, function (err, posts) {
-        res.render('blog-container', {
+    Post.getAll(function (err, posts) {
+        res.render('blogs', {
             title: 'blog',
             posts: posts,
             user: req.session.user
@@ -47,11 +47,11 @@ router.get('/blogLater', function (req, res, next) {
     });
 });
 /*详情页*/
-router.get('/blog/:_id', function (req, res, next) {
+router.get('/blogs/:_id', function (req, res, next) {
     Post.getOne(req.params._id, function (err, post) {
         if (err) {
             console.log(err);
-            res.redirect('/blogMain')
+            res.redirect('/blogs')
         }
         res.render('details', {
             title: post.title,
@@ -90,9 +90,9 @@ router.post('/login', function (req, res, next) {
         }
         //用户名密码都匹配后，将用户信息存入 session
         req.session.user = user;
-        console.log(req.session.user);
+        console.log(user);
         //req.flash('success', '登陆成功!');
-        res.redirect('/blogMain');//登陆成功后跳转到主页
+        res.redirect('/blogs');//登陆成功后跳转到主页
     });
 });
 
@@ -149,18 +149,20 @@ router.post('/register', function (req, res, next) {
                 return res.redirect('/register');//注册失败返回主册页
             }
             req.session.user = newUser;//用户信息存入 session
-            res.redirect('/blog-container');//注册成功后返回主页
+            res.redirect('/blogs');//注册成功后返回主页
         });
     });
 });
 
 /*发表*/
 router.get('/post', checkLogin);
+router.get('/post', checkPermissions);
 router.get('/post', function (req, res, next) {
     res.render('post', {
         title: '发表',
         user: req.session.user
     });
+    console.log(req.session.user.power)
 });
 router.post('/post', checkLogin);
 router.post('/post', function (req, res, next) {
@@ -177,7 +179,7 @@ router.post('/post', function (req, res, next) {
         if (err) {
             return res.redirect('/');
         }
-        res.redirect('/blogMain');//发表成功跳转到主页
+        res.redirect('/blogs');//发表成功跳转到主页
     });
 });
 function checkLogin(req, res, next) {
@@ -189,6 +191,12 @@ function checkLogin(req, res, next) {
 
 function checkNotLogin(req, res, next) {
     if (req.session.user) {
+        res.redirect('back');//返回之前的页面
+    }
+    next();
+}
+function checkPermissions(req, res, next) {
+    if (!req.session.user.power) {
         res.redirect('back');//返回之前的页面
     }
     next();

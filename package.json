@@ -15,7 +15,7 @@
     "express": "~4.13.1",
     "express-session": "*",
     "less-middleware": "1.0.x",
-    "mongoose": "*",
+    "mongoose": "^4.4.13",
     "morgan": "~1.6.1",
     "passport-local-mongoose": "*",
     "serve-favicon": "~2.3.0"

@@ -12,19 +12,16 @@ var crypto = require('crypto'),
             type: String,
             unique: true
         },
-        /*pv: {
-         type: Number,
-         default: 0
-         },*/
+        pv: {
+            type: Number,
+            default: 0
+        },
         intro: String,//简介
-        category: {
-            type: String,
-            default: 'node JS'
-        },//分类
+        category: String, //分类
         post: String,//内容
         date: {
-            type: Date,
-            default: Date.now()
+            type: Date
+            //default: Date.now()
         }//时间
     }),
 
@@ -55,7 +52,7 @@ Post.prototype.save = function (callback) {
         intro: this.intro,
         category: this.category,
         post: this.post,
-        date: this.date
+        date: time.minute
     };
 
     var newPost = new postModel(post);
