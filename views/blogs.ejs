@@ -6,6 +6,7 @@
         <!--文章列表 start-->
         <div class="article-left">
             <!--1-->
+            <% var len = posts.length %>
             <% posts.forEach(function (post, index) { %>
             <div class="article-list">
                 <!--标题-->
@@ -28,7 +29,9 @@
                     <a href="blogs/<%- post._id %>" target="_blank">MORE</a>
                 </div>
             </div>
+            <% if(index != len - 1){ %>
             <div class="underline"></div>
+            <% } %>
             <% }) %>
         </div>
         <!--文章列表 end-->
@@ -40,7 +43,9 @@
                 <dl>
                     <dt>最新文章</dt>
                     <% posts.forEach(function (post, index) { %>
-                    <% if(index == 10){return false} %>
+                    <% if (index == 10) {
+                        return false
+                    } %>
                     <dd><a href="blogs/<%- post._id %>"><%= post.title %></a></dd>
                     <% }) %>
                 </dl>
@@ -54,7 +59,7 @@
                 <dl>
                     <dt>标签</dt>
                     <% posts.forEach(function (post, index) { %>
-                    <dd><a href=""><%= post.category %></a></dd>
+                    <dd><a href="blogs/<%- post._id %>"><%= post.category %></a></dd>
                     <% }) %>
                 </dl>
             </div>

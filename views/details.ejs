@@ -6,7 +6,7 @@
 <div class="blog">
     <div class="blog-container">
         <!--文章列表 start-->
-        <div class="article-left" style="float: none;width:100%;max-width: 1000px;margin: auto">
+        <div class="article-left details">
             <!--1-->
             <div class="article-list">
                 <!--标题-->
@@ -27,15 +27,30 @@
                 <div class="hr-40"></div>
                 <div class="underline"></div>
                 <div class="hr-40"></div>
-                <!-- UY BEGIN -->
-                <div id="uyan_frame"></div>
-                <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2095106"></script>
-                <!-- UY END -->
+                <!-- 多说评论框 start -->
+                <div class="ds-thread" data-thread-key="<%= post._id %>" data-title="<%= post.title %>"
+                     data-url="blogs/<%- post._id %>"></div>
+                <!-- 多说评论框 end -->
+                <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+                <script type="text/javascript">
+                    var duoshuoQuery = {short_name: "lightcolors"};
+                    (function () {
+                        var ds = document.createElement('script');
+                        ds.type = 'text/javascript';
+                        ds.async = true;
+                        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+                        ds.charset = 'UTF-8';
+                        (document.getElementsByTagName('head')[0]
+                        || document.getElementsByTagName('body')[0]).appendChild(ds);
+                    })();
+                </script>
+                <!-- 多说公共JS代码 end -->
+
             </div>
         </div>
         <!--文章列表 end-->
     </div>
 </div>
-<script type="text/javascript" src="http://libs.useso.com/js/jquery/1.4.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://libs.useso.com/js/jquery/2.0.1/jquery.min.js"></script>
 <script type="text/javascript" src="/javascripts/account.js"></script>
 <% include footer.ejs %>

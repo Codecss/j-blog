@@ -83,11 +83,28 @@ function validateEmail(email) {
     $(".backToTop").on("click", function () {
         $("html,body").animate({
             scrollTop: 0
-        },500);
+        }, 500);
     });
     $(window).on("resize", function () {
         i = $(window).height()
     }).on("scroll", function () {
-        $(this).scrollTop() > i ? $(".backToTop").show() : $(".backToTop").hide()
+        if ($(this).scrollTop() > 72) {
+            $('.header').css({
+                'position': 'fixed',
+                'top': 0,
+                'background': 'rgba(255,255,255,0.6)',
+                'z-index': 9
+            });
+            $(".backToTop").show(500)
+        } else {
+            $('.header').css({
+                'position': 'static',
+                'top': 0,
+                'background': '#FFFFFF',
+                'z-index': 9
+            });
+            $(".backToTop").hide(500)
+
+        }
     });
 })();
