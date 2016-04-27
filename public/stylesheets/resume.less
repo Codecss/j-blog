@@ -1,0 +1,50 @@
+@charset "UTF-8";
+
+//基础颜色
+@orange: #F35E0E;
+/*简历 -start- */
+.resume {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  .resume-container {
+    .resume-header {
+      background: @orange;
+      overflow: hidden;
+      color: #FFFFFF;
+      .resume-left {
+        padding: 60px 0 40px 40px;
+        float: left;
+        .resume-title {
+          font-family: 'Helvetica',sans-serif;
+          font-size: 36px;
+          line-height: 36px;
+          font-weight: 700;
+        }
+        .resume-sub {
+          padding-top: 10px;
+          font-size: 18px;
+        }
+      }
+      .resume-right {
+        float: right;
+        padding: 80px 40px 40px 0;
+        li{
+          padding: 4px 0;
+          font-size: 14px;
+          text-align: right;
+        }
+      }
+    }
+    .resume-info {
+      background: #FFFFFF;
+      height: 200px;
+
+    }
+    .resume-footer {
+
+    }
+  }
+}
+
+/*简历 -end- */

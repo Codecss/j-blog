@@ -607,6 +607,54 @@ a {
 
 /*后台管理 -start- */
 .form-edit {
+  table {
+    width: 100%;
+    .form-thead {
+      td {
+        line-height: 34px;
+        border-bottom: 2px solid #F0F0F0;
+        font-weight: 700;
+        text-align: center;
+        &.form-index {
+          width: 5%;
+        }
+        &.form-id {
+          width: 40%;
+        }
+        &.form-name {
+          width: 40%;
+        }
+        &.form-delete {
+          width: 5%;
+          a {
+            &:hover {
+              color: @orange;
+            }
+          }
+        }
+        &.form-edit {
+          width: 5%;
+          a {
+            &:hover {
+              color: @orange;
+            }
+          }
+        }
+      }
+    }
+    tbody {
+      .form-thead();
+      tr {
+        &:hover {
+          background: #FAFAFA;
+        }
+      }
+      td {
+        border-bottom: 1px solid #F0F0F0;
+        font-weight: 400;
+      }
+    }
+  }
 
 }
 
