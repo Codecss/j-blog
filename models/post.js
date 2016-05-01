@@ -65,6 +65,10 @@ Post.prototype.save = function (callback) {
         callback(null, post);
     });
 };
+Post.del = function () {
+    postModel.find
+
+};
 
 Post.getOne = function (_id, callback) {
     postModel.findOne({_id: _id}, function (err, doc) {
@@ -72,7 +76,8 @@ Post.getOne = function (_id, callback) {
             console.log(err);
         }
         callback(null, doc)
-    }).update({$inc: {"pv": 1}},function(err){})
+    }).update({$inc: {"pv": 1}}, function (err) {
+    })
 
 };
 Post.getTen = function (index, callback) {
