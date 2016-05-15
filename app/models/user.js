@@ -1,6 +1,8 @@
 /**
- * Created by Ironman on 16/4/2.
+ * Created by jiangwei.john@foxmail on 2016/4/6.
  */
-    var UserSchema=require('./');
-var userModel = mongoose.model('User', UserSchema);
+var mongoose = require('mongoose');
+var UserSchema = require('../schema/user');
+var User = mongoose.model('User', UserSchema);
 
+module.exports = User;

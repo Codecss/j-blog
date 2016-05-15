@@ -1,7 +1,6 @@
 /**
- * Created by Ironman on 16/4/2.
+ * Created by jiangwei.john@foxmail on 2016/4/6.
  */
-var crypto = require('crypto');
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
@@ -20,5 +19,3 @@ var UserSchema = new Schema({
 
 
 module.exports = UserSchema;
-
-

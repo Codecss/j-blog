@@ -7,6 +7,8 @@ var bodyParser = require('body-parser');
 var fs = require('fs');
 var crypto = require('crypto');
 
+
+
 //采用connect-mongo中间件作为Session存储
 var session = require('express-session');
 var mongoose = require('mongoose');
@@ -15,13 +17,16 @@ var dbUrl = 'mongodb://localhost/blog';
 mongoose.connect(dbUrl);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {
+db.once('open', function () {
     console.log('success')
 });
 var routes = require('./routes/index');
-var users = require('./routes/users');
 
 var app = express();
+
+//post请求时 请求体的大小
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -50,7 +55,6 @@ app.use(session({
 }));
 
 app.use('/', routes);
-app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

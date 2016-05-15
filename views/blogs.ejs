@@ -6,6 +6,7 @@
         <!--文章列表 start-->
         <div class="article-left">
             <!--1-->
+
             <% var len = posts.length %>
             <% posts.forEach(function (post, index) { %>
             <div class="article-list">
@@ -43,9 +44,6 @@
                 <dl>
                     <dt>最新文章</dt>
                     <% posts.forEach(function (post, index) { %>
-                    <% if (index == 10) {
-                        return false
-                    } %>
                     <dd><a href="blogs/<%- post._id %>"><%= post.title %></a></dd>
                     <% }) %>
                 </dl>

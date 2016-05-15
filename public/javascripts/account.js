@@ -1,5 +1,5 @@
 /**
- * Created by Ironman on 16/4/1.
+ * Created by jiangwei.john@foxmail on 2016/4/6.
  */
 function signup() {
     if (!simpleValidate()) return;
@@ -107,4 +107,20 @@ function validateEmail(email) {
 
         }
     });
+    $('.delete').click(function (e) {
+        var target = $(e.target);
+        var id = target.data('id');
+        var tr = $('.item-id-' + id);
+        if (confirm('确定删除')) {
+            $.ajax({
+                    type: 'DELETE',
+                    url: '/edit?id=' + id
+                })
+                .done(function (res) {
+                    if (res.success === 1) {
+                        tr.remove()
+                    }
+                })
+        }
+    })
 })();

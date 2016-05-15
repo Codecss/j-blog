@@ -1,5 +1,5 @@
 /**
- * Created by jiangwei on 2016/4/6.
+ * Created by jiangwei.john@foxmail on 2016/4/6.
  */
 var crypto = require('crypto'),
     mongoose = require('mongoose'),
@@ -20,8 +20,7 @@ var crypto = require('crypto'),
         category: String, //分类
         post: String,//内容
         date: {
-            type: Date
-            //default: Date.now()
+            type: String
         }//时间
     });
 module.exports = PostSchema;

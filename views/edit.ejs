@@ -8,18 +8,18 @@
                 <td class="form-index">序号</td>
                 <td class="form-id">_id</td>
                 <td class="form-name">标题</td>
-                <td class="form-delete">操作</td>
                 <td class="form-edit">操作</td>
+                <td class="form-delete">操作</td>
             </tr>
             </thead>
             <tbody>
             <% posts.forEach(function (post, index) { %>
-            <tr>
+            <tr class="item-id-<%= post._id %>">
                 <td class="form-index"><%= index + 1 %></td>
                 <td class="form-id"><%= post._id %></td>
                 <td class="form-name"><%= post.title %></td>
-                <td class="form-delete"><a href="">编辑</a></td>
-                <td class="form-edit"><a href="">删除</a></td>
+                <td class="form-edit"><a href="">编辑</a></td>
+                <td class="form-delete"><a class="delete" data-id="<%= post._id %>" href="javascript:;">删除</a></td>
             </tr>
             <% }) %>
             </tbody>

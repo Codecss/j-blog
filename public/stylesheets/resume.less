@@ -1,12 +1,24 @@
+/**
+ * Created by jiangwei.john@foxmail on 2016/4/6.
+ */
 @charset "UTF-8";
 
 //基础颜色
 @orange: #F35E0E;
+//基础阴影
+.boxShadow(@o,@t,@th,@f,@A) {
+  box-shadow: @o @t @th rgba(0, 0, 0, @A);
+  -webkit-box-shadow: @o @t @th rgba(0, 0, 0, @A);
+  -o-box-shadow: @o @t @th rgba(0, 0, 0, @A);
+  -moz-box-shadow: @o @t @th rgba(0, 0, 0, @A);
+}
+
 /*简历 -start- */
 .resume {
   width: 100%;
   max-width: 1000px;
   margin: 0 auto;
+  .boxShadow(0, 2px, 10px, 1px, 0.1);
   .resume-container {
     .resume-header {
       background: @orange;
@@ -16,7 +28,7 @@
         padding: 60px 0 40px 40px;
         float: left;
         .resume-title {
-          font-family: 'Helvetica',sans-serif;
+          font-family: 'Helvetica', sans-serif;
           font-size: 36px;
           line-height: 36px;
           font-weight: 700;
@@ -29,7 +41,7 @@
       .resume-right {
         float: right;
         padding: 80px 40px 40px 0;
-        li{
+        li {
           padding: 4px 0;
           font-size: 14px;
           text-align: right;
