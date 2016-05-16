@@ -25,6 +25,12 @@ exports.list = function (req, res, next) {
 //blogs 详情页
 exports.detail = function (req, res, next) {
     var id = req.params._id;
+    Post.update({_id: id}, {$inc: {pv: 1}}, function (err) {
+        if (err) {
+            console.log(err);
+            res.redirect('/blogs')
+        }
+    });
     Post
         .findOne({_id: id})
         .exec(function (err, blog) {
@@ -34,7 +40,6 @@ exports.detail = function (req, res, next) {
             }
             res.render('details', {
                 title: blog.title,
-                time: blog.date,
                 post: blog,
                 pageAll: blog.length,
                 user: req.session.user

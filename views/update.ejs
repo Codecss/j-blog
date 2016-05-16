@@ -1,0 +1,47 @@
+<link rel="stylesheet" href="../../stylesheets/base.css">
+<link rel="icon" href="../../images/logo.icon.png">
+<link rel="stylesheet" href="../../kindeditor/themes/default/default.css"/>
+<link rel="stylesheet" href="../../kindeditor/themes/simple/simple.css"/>
+
+<div class="post-content">
+    <div class="login-reg-title"><%= title %></div>
+    <form class="form-post" name="post" method="post" action="">
+        <table cellpadding="0" cellspacing="0" border="0">
+            <tbody>
+            <tr>
+                <td class="form-name">标题:</td>
+                <td class="form-input"><input name="title" type="text" value="<%= posts.title %>">
+            </tr>
+            <tr>
+                <td class="form-name">分类:</td>
+                <td class="form-input"><input name="category" type="text" value="<%= posts.category %>"></td>
+            </tr>
+            <tr>
+                <td class="form-name" style="vertical-align: top">简介:</td>
+                <td class="form-input"><textarea id="editor_id_1" name="intro" value="<%= posts.intro %>"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td class="form-name" style="vertical-align: top"> 内容:</td>
+                <td class="form-input"><textarea id="editor_id_2" autofocus name="post" value="<%= posts.post %>"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td class="form-btn" colspan="2"><input class="btn" type="submit" value="提交"></td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+<script src="http://libs.useso.com/js/jquery/2.0.1/jquery.min.js"></script>
+<script src="../../javascripts/account.js"></script>
+<script src="../../kindeditor/kindeditor-all-min.js"></script>
+<script src="../../kindeditor/lang/zh-CN.js"></script>
+<script>
+    KindEditor.ready(function (K) {
+        window.editor = K.create('#editor_id_1');
+    });
+    KindEditor.ready(function (K) {
+        window.editor = K.create('#editor_id_2');
+    });
+</script>

@@ -18,7 +18,7 @@
                 <td class="form-index"><%= index + 1 %></td>
                 <td class="form-id"><%= post._id %></td>
                 <td class="form-name"><%= post.title %></td>
-                <td class="form-edit"><a href="">编辑</a></td>
+                <td class="form-edit"><a href="/edit/update/<%= post._id %>">编辑</a></td>
                 <td class="form-delete"><a class="delete" data-id="<%= post._id %>" href="javascript:;">删除</a></td>
             </tr>
             <% }) %>

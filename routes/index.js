@@ -35,9 +35,8 @@ router.post('/post', checkLogin, Post.post);
 router.get('/edit', checkLogin, checkPermissions, Post.showEdit);
 router.delete('/edit', checkLogin, checkPermissions, Post.del);
 
-router.post('/edit', checkLogin);
-router.post('/edit', function (req, res, next) {
-});
+router.get('/edit/update/:id', checkLogin, checkPermissions, Post.showUpdate);
+router.post('/edit/update/:id', checkLogin, checkPermissions, Post.update);
 
 router.use(function (req, res) {
     res.render("404");

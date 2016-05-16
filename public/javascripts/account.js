@@ -122,5 +122,5 @@ function validateEmail(email) {
                     }
                 })
         }
-    })
+    });
 })();
