@@ -17,6 +17,7 @@ exports.list = function (req, res, next) {
             res.render('blogs', {
                 title: 'blog',
                 posts: blogs,
+                postsCategory: getCategory(blogs),
                 user: req.session.user
             });
         })
@@ -25,7 +26,7 @@ exports.list = function (req, res, next) {
 exports.sorts = function (req, res, next) {
     var category = req.params.category;
     Post
-        .find({}).sort({'date': -1})
+        .find({category:category}).sort({'date': -1})
         .exec(function (err, blogs) {
             if (err) {
                 console.log(err);
@@ -62,4 +63,32 @@ exports.detail = function (req, res, next) {
             })
         })
 };
+//对 标签进行提取 并显示个数
+function getCategory(arguments) {
+    var count = 0,
+        len = arguments.length,
+        temp = [],
+        postsNext = [],
+        postsNew = [],
+        postsLast = [];
+    for (var i = 0; i < len; i++) {
+        postsNext.push(arguments[i].category);
+    }
+    for (var i = 0; i < len; i++) {
+        if (postsNext[i] != 1) {
+            temp = postsNext[i];
+            for (var j = 0; j < len; j++) {
+                if (temp == postsNext[j]) {
+                    count++;
+                    postsNext[j] = 1
+                }
+            }
+            postsNew.push(temp + '(' + count + ')');
+            postsLast.push(temp);
+            count = 0;
+        }
+    }
+    var postsCategory = [postsNew, postsLast];
+    return postsCategory
+}
 
