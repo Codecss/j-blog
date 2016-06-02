@@ -13,6 +13,10 @@ router.get('/about', Index.about);
 
 /*博客list*/
 router.get('/blogs', Blogs.list);
+/*分类 list*/
+router.get('/blogs/sorts/:category', Blogs.sorts);
+/*分类 详情页*/
+router.get('/blogs/sorts/blogs/:_id', Blogs.detail);
 /*详情页*/
 router.get('/blogs/:_id', Blogs.detail);
 

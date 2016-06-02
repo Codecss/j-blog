@@ -21,6 +21,22 @@ exports.list = function (req, res, next) {
             });
         })
 };
+//分类 列表页
+exports.sorts = function (req, res, next) {
+    var category = req.params.category;
+    Post
+        .find({}).sort({'date': -1})
+        .exec(function (err, blogs) {
+            if (err) {
+                console.log(err);
+            }
+            res.render('sorts', {
+                title: '标签' + ':' + category,
+                posts: blogs,
+                user: req.session.user
+            });
+        })
+};
 
 //blogs 详情页
 exports.detail = function (req, res, next) {

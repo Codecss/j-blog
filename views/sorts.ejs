@@ -1,0 +1,46 @@
+<% include header.ejs %>
+<div class="login-reg">
+    <div class="login-reg-title"><%= title %></div>
+    <form class="form-edit" name="edit" method="post" action="">
+        <table cellpadding="0" cellspacing="0" border="0">
+            <thead class="form-thead">
+            <tr>
+                <td class="form-index">序号</td>
+                <td class="form-id">标签</td>
+                <td class="form-name">标题</td>
+                <td class="form-edit">时间</td>
+                <td class="form-delete">操作</td>
+            </tr>
+            </thead>
+            <tbody>
+            <% posts.forEach(function (post, index) { %>
+            <tr class="item-id-<%= post._id %>">
+                <td class="form-index"><%= index + 1 %></td>
+                <td class="form-id"><%= post.category %></td>
+                <td class="form-name"><%= post.title %></td>
+                <td class="form-edit"><%= post.date %></td>
+                <td class="form-delete"><a href="blogs/<%-post._id%>">查看</a></td>
+            </tr>
+            <% }) %>
+            </tbody>
+        </table>
+        <div class="hr-40"></div>
+    </form>
+</div>
+<script type="text/javascript" src="http://libs.useso.com/js/jquery/2.0.1/jquery.min.js"></script>
+<script type="text/javascript" src="javascripts/account.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".nav a").each(function () {
+            $this = $(this);
+            if ($this[0].href == String(window.location)) {
+                $this.addClass("current");
+            }
+            if ($this[0].href === '/') {
+                alert(1)
+            }
+        });
+    });
+</script>
+</body>
+</html>
