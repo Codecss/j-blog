@@ -8,7 +8,7 @@ var User = mongoose.model('User');
 
 //blogs 列表页
 exports.list = function (req, res, next) {
-    Post
+    /*Post
         .find({}).sort({'date': -1})
         .exec(function (err, blogs) {
             if (err) {
@@ -20,13 +20,40 @@ exports.list = function (req, res, next) {
                 postsCategory: getCategory(blogs),
                 user: req.session.user
             });
+        });*/
+    var limit = 4,
+        page = req.query.page || 1;
+    Post
+        .count({}, function (err, count) {
+            if (err)console.log(err);
+            console.log(count);
+            Post
+                .find({}, function (err, blogs) {
+                    if (err)console.log(err);
+                    Post
+                        .find({}).sort({'date': -1}).skip((page - 1) * limit).limit(limit)
+                        .exec(function (err, posts) {
+                            if (err)console.log(err);
+                            res.render('blogs', {
+                                title: 'blog',
+                                count:count,
+                                limit:limit,
+                                posts: posts,
+                                blogs: blogs,
+                                page:page,
+                                postsCategory: getCategory(blogs),
+                                user: req.session.user
+                            })
+                        })
+
+                })
         })
 };
 //分类 列表页
 exports.sorts = function (req, res, next) {
     var category = req.params.category;
     Post
-        .find({category:category}).sort({'date': -1})
+        .find({category: category}).sort({'date': -1})
         .exec(function (err, blogs) {
             if (err) {
                 console.log(err);
