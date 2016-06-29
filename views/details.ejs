@@ -1,54 +1,127 @@
-<% include header.ejs %>
-
-<!--博客内容-->
-<div class="blog">
-    <div class="blog-container">
-        <!--文章列表 start-->
-        <div class="article-left details">
-            <!--1-->
-            <div class="article-list">
-                <!--标题-->
-                <div class="article-list-title"><h2 style="text-align: center"><%= post.title %></h2></div>
-                <!--提示信息-->
-                <div class="article-list-tips" style="text-align: center">
-                    <ul>
-                        <li><span>日期：</span><span><%= post.date %></span></li>
-                        <li><span>作者：</span><span><%= post.name %></span></li>
-                        <li><span>类型：</span><span><%= post.category %></span></li>
-                        <li><span>浏览：</span><span><%= post.pv %></span></li>
-                    </ul>
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title><%= title %></title>
+    <% include base/link.ejs %>
+</head>
+<body>
+<div class="container ">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="hr-40"></div>
+        </div>
+    </div>
+    <div class="panel panel-default box-shadow border-none border-radius">
+        <div class="panel-body">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 .col-sm-12 col-xs-12">
+                        <div class="page-header">
+                            <h2><a href="/blogs">LIGHTCOLORS</a><br>
+                                <small>node for blog</small>
+                            </h2>
+                        </div>
+                        <% include base/crumb.ejs %>
+                    </div>
                 </div>
-                <!--内容-->
-                <div class="article-list-info">
-                    <span class="default-css"><%- post.post %></span>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 ">
+                        <div id="" class="">
+                            <!--标题-->
+                            <div class="page-header">
+                                <h4><%= post.title %><br></h4>
+                            </div>
+                            <!--提示信息-->
+                            <div class="">
+                                <span class="label label-success inline-block"><i
+                                            class="glyphicon glyphicon-time"></i> <%= post.date %></span><span
+                                        class="label label-info inline-block"><i
+                                            class="glyphicon glyphicon-user"></i> <%= post.name %></span><span
+                                        class="label label-success inline-block"><i
+                                            class="glyphicon glyphicon-paperclip"></i> <%= post.category %></span><span
+                                        class="label label-info inline-block"><i
+                                            class="glyphicon glyphicon-eye-open"></i> <%= post.pv %></span>
+                            </div>
+                            <div class="hr-20"></div>
+                            <!--内容-->
+                            <div class=""><%- post.post %></div>
+                            <div class="hr-40"></div>
+                            <div class="underline"></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="hr-40"></div>
-                <div class="underline"></div>
-                <div class="hr-40"></div>
-                <!-- 多说评论框 start -->
-                <div class="ds-thread" data-thread-key="<%= post._id %>" data-title="<%= post.title %>"
-                     data-url="blogs/<%- post._id %>"></div>
-                <!-- 多说评论框 end -->
-                <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-                <script type="text/javascript">
-                    var duoshuoQuery = {short_name: "lightcolors"};
-                    (function () {
-                        var ds = document.createElement('script');
-                        ds.type = 'text/javascript';
-                        ds.async = true;
-                        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-                        ds.charset = 'UTF-8';
-                        (document.getElementsByTagName('head')[0]
-                        || document.getElementsByTagName('body')[0]).appendChild(ds);
-                    })();
-                </script>
-                <!-- 多说公共JS代码 end -->
-
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="page-header">
+                            <h4>评论
+                                <small class="badge">node for blog</small>
+                            </h4>
+                        </div>
+                        <form>
+                            <div class="form-group">
+                                <font>*</font><label for="commentEmail">Email address</label>
+                                <input type="email" class="form-control" name="commentEmail" id="commentEmail"
+                                       placeholder="Your email">
+                            </div>
+                            <div class="form-group">
+                                <font>*</font><label for="commentName">Your name</label>
+                                <input type="text" class="form-control" name="commentName" id="commentName"
+                                       placeholder="Your name">
+                            </div>
+                            <div class="form-group">
+                                <font>*</font><label for="commentContent">Content</label>
+                                <textarea rows="4" class="form-control" name="commentContent" id="commentContent"
+                                          placeholder="Content"></textarea>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"> Remember me
+                                </label>
+                            </div>
+                            <button type="submit" class="btn btn-default">Submit</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="page-header">
+                            <h4>评论列表
+                                <small class="badge">12</small>
+                            </h4>
+                        </div>
+                        <div class="media">
+                            <div class="media-left">
+                                <a href="#">
+                                    <img class="media-object" data-src="holder.js/64x64" alt="64x64"
+                                         src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PCEtLQpTb3VyY2UgVVJMOiBob2xkZXIuanMvNjR4NjQKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNTU5ZDI3MWFhMyB0ZXh0IHsgZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE1NTlkMjcxYWEzIj48cmVjdCB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSIxMy4yMjY1NjI1IiB5PSIzNi41MzI4MTI1Ij42NHg2NDwvdGV4dD48L2c+PC9nPjwvc3ZnPg=="
+                                         data-holder-rendered="true" style="width: 64px; height: 64px;">
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading">Media heading</h4>
+                                <small>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante
+                                sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra
+                                turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis
+                                in faucibus.</small>
+                            </div>
+                        </div>
+                        <div class="hr-40"></div>
+                    </div>
+                </div>
             </div>
         </div>
-        <!--文章列表 end-->
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <% include footer.ejs %>
+        </div>
     </div>
 </div>
+</body>
+</html>
+
 <script type="text/javascript" src="http://libs.useso.com/js/jquery/2.0.1/jquery.min.js"></script>
-<script type="text/javascript" src="/javascripts/account.js"></script>
-<% include footer.ejs %>
+<script type="text/javascript" src="/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="javascripts/account.js"></script>
+<script src="/javascripts/ajax.js"></script>

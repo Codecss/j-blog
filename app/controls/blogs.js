@@ -6,21 +6,14 @@ var mongoose = require('mongoose');
 var Post = mongoose.model('Post');
 var User = mongoose.model('User');
 
+
+exports.getCategoryAjax = function (req, res, next) {
+
+};
+
+
 //blogs 列表页
 exports.list = function (req, res, next) {
-    /*Post
-        .find({}).sort({'date': -1})
-        .exec(function (err, blogs) {
-            if (err) {
-                console.log(err);
-            }
-            res.render('blogs', {
-                title: 'blog',
-                posts: blogs,
-                postsCategory: getCategory(blogs),
-                user: req.session.user
-            });
-        });*/
     var limit = 4,
         page = req.query.page || 1;
     Post
@@ -36,11 +29,11 @@ exports.list = function (req, res, next) {
                             if (err)console.log(err);
                             res.render('blogs', {
                                 title: 'blog',
-                                count:count,
-                                limit:limit,
+                                count: count,
+                                limit: limit,
                                 posts: posts,
                                 blogs: blogs,
-                                page:page,
+                                page: page,
                                 postsCategory: getCategory(blogs),
                                 user: req.session.user
                             })
@@ -51,21 +44,58 @@ exports.list = function (req, res, next) {
 };
 //分类 列表页
 exports.sorts = function (req, res, next) {
-    var category = req.params.category;
+    Post
+        .find({}).sort({'date': -1})
+        .exec(function (err, blogs) {
+            if (err) {
+                console.log(err);
+            }
+            var categoryNum = getCategory(blogs)[0],//带数字
+                categoryUrl = getCategory(blogs)[1],
+                len = categoryNum.length,
+                domArray = '';
+            for (var i = 0; i < len; i++) {
+                var dom = '<button type="button" data-category="' + categoryUrl[i] + '" class="btn btn-default  inline-block">' + categoryNum[i] + '</button>';
+                domArray = domArray + dom;
+
+            }
+            blogs.forEach(function (blog, index) {
+            });
+            res.send(domArray);
+        })
+};
+//分类 列表页
+exports.sortsBlog = function (req, res, next) {
+    var category = req.query.category;
     Post
         .find({category: category}).sort({'date': -1})
         .exec(function (err, blogs) {
             if (err) {
                 console.log(err);
             }
-            res.render('sorts', {
-                title: '标签' + ':' + category,
-                posts: blogs,
-                user: req.session.user
+            var len = blogs.length,
+                domArray = '';
+            blogs.forEach(function (blog, index) {
+                var dom = '<div data-index="' + index + '" class="">' +
+                    '<h3>' + blog.title + '</h3>' +
+                    '<div class="">' +
+                    '<span class="label label-success inline-block"><i class="glyphicon glyphicon-time"></i>  ' + blog.date + '</span>' +
+                    '<span class="label label-info inline-block"><i class="glyphicon glyphicon-user"></i>  ' + blog.name + '</span>' +
+                    '<span class="label label-success inline-block"><i class="glyphicon glyphicon-paperclip"></i>  ' + blog.category + '</span>' +
+                    '<span class="label label-info inline-block"><i class="glyphicon glyphicon-eye-open"></i> ' + blog.pv + '</span> ' +
+                    '</div> ' +
+                    '<div class="hr-20"></div> ' +
+                    '<div class=""><p>' + blog.intro + '</p></div> ' +
+                    '<div class="hr-20"></div> ' +
+                    '<div class="text-right"><a class="btn btn-default" href="blogs/' + blog._id + '" target="_blank">MORE</a> </div></div>';
+                domArray = domArray + dom;
+
             });
+            blogs.forEach(function (blog, index) {
+            });
+            res.send(domArray);
         })
 };
-
 //blogs 详情页
 exports.detail = function (req, res, next) {
     var id = req.params._id;

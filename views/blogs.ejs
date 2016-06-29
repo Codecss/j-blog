@@ -1,87 +1,102 @@
-<% include header.ejs %>
-
-<!--博客内容-->
-<div class="blog">
-    <div class="blog-container">
-        <!--文章列表 start-->
-        <div class="article-left">
-            <!--1-->
-
-            <% var len = posts.length %>
-            <% posts.forEach(function (post, index) { %>
-            <div class="article-list">
-                <!--标题-->
-                <div class="article-list-title"><h2><%= post.title %></h2></div>
-                <!--提示信息-->
-                <div class="article-list-tips">
-                    <ul>
-                        <li><span>日期：</span><span><%= post.date %></span></li>
-                        <li><span>作者：</span><span><%= post.name %></span></li>
-                        <li><span>标签：</span><span><%= post.category %></span></li>
-                        <li><span>浏览：</span><span><%= post.pv %></span></li>
-                    </ul>
-                </div>
-                <!--内容-->
-                <div class="article-list-info">
-                    <span><%- post.intro %></span>
-                </div>
-                <!--btn-->
-                <div class="article-btn">
-                    <a href="blogs/<%- post._id %>" target="_blank">MORE</a>
-                </div>
-            </div>
-            <% if(index != len - 1){ %>
-            <div class="underline"></div>
-            <% } %>
-            <% }) %>
-            <% var counts = Math.ceil(count / limit) %>
-            <% console.log(counts); %>
-            <div class="page">
-                <ul>
-                    <li><a href="/blogs?page=<%= 1 %>">首页</a></li>
-                    <li><a href="/blogs?page=<%= counts %>">末页</a></li>
-                    <li>当前 <%= page %> 页</li>
-                    <li>共 <%= counts %> 页</li>
-                </ul>
-            </div>
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title><%= title %></title>
+    <% include base/link.ejs %>
+</head>
+<body>
+<div class="container ">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="hr-40"></div>
         </div>
-        <!--文章列表 end-->
-
-        <!--右侧栏 start-->
-        <div class="article-right">
-            <!--最新文章 start-->
-            <div class="article-later">
-                <dl>
-                    <dt>最新文章</dt>
-                    <% blogs.forEach(function (post, index) { %>
-                    <dd><a href="blogs/<%- post._id %>"><%= post.title %></a></dd>
-                    <% }) %>
-                </dl>
-            </div>
-            <!--最新文章 end-->
-            <div class="underline"></div>
-            <!--类型标签页 start-->
-            <div class="article-type">
-                <dl>
-                    <dt>标签</dt>
-                    <% var len = postsCategory[0].length; %>
-                    <% var numCategory = postsCategory[0] %>
-                    <% var nameCategory = postsCategory[1] %>
-                    <% for (var i = 0; i < len; i++) { %>
-                    <dd><a href="blogs/sorts/<%- nameCategory[i] %>"><%= numCategory[i] %></a></dd>
-                    <% } %>
-                </dl>
-            </div>
-            <!--类型标签页 end-->
-            <!--<div class="underline"></div>-->
-            <!--预留广告位 start-->
-            <div class="article-ad hide">
-                广告
-            </div>
-            <!--预留广告位 end-->
-        </div>
-        <!--右侧栏 end-->
     </div>
-</div>
+    <div class="panel panel-default box-shadow border-none border-radius">
+        <div class="panel-body">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 .col-sm-12 col-xs-12">
+                        <div class="page-header">
+                            <h2><a href="/blogs">LIGHTCOLORS</a><br>
+                                <small>node for blog</small>
+                            </h2>
+                        </div>
+                        <% include base/nav.ejs %>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-8 col-md-8 ">
+                        <div class="btn-group-sm" id="categoryBlog" role="group"></div>
+                        <div id="categoryBlogGetAct" class="">
+                            <% posts.forEach(function (post, index) { %>
+                            <div data-index="<%= index %>" class="">
+                                <!--标题-->
+                                <h3><%= post.title %></h3>
+                                <!--提示信息-->
+                                <div class="">
+                                <span class="label label-success inline-block"><i
+                                            class="glyphicon glyphicon-time"></i> <%= post.date %></span><span
+                                            class="label label-info inline-block"><i
+                                                class="glyphicon glyphicon-user"></i> <%= post.name %></span><span
+                                            class="label label-success inline-block"><i
+                                                class="glyphicon glyphicon-paperclip"></i> <%= post.category %></span><span
+                                            class="label label-info inline-block"><i
+                                                class="glyphicon glyphicon-eye-open"></i> <%= post.pv %></span>
+                                </div>
+                                <div class="hr-20"></div>
+                                <!--内容-->
+                                <div class="">
+                                    <p class=""><%- post.intro %></p>
+                                </div>
+                                <!--btn-->
+                                <div class="hr-20"></div>
+                                <div class="text-right">
+                                    <a class="btn btn-default" href="blogs/<%- post._id %>" target="_blank">MORE</a>
+                                </div>
+                            </div>
+                            <div class="hr-20"></div>
+                            <div class="underline"></div>
+                            <% }) %>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-xs-12">
 
-<% include footer.ejs %>
+                        <div class="page-header">
+                            <h4>最热文章
+                                <small>node for blog</small>
+                            </h4>
+                        </div>
+                        <div class="list-group" id="hotBlogs">
+                            <% blogs.forEach(function (post, index) { %>
+                            <a href="blogs/<%- post._id %>" class="list-group-item border-none"><span
+                                        class="badge"><%= post.pv %></span><%= post.title %></a>
+                            <% }) %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <% include footer.ejs %>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
+
+<script type="text/javascript" src="http://libs.useso.com/js/jquery/2.0.1/jquery.min.js"></script>
+<script type="text/javascript" src="/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="javascripts/account.js"></script>
+<script src="/javascripts/ajax.js"></script>
+<script>
+    (function () {
+
+        var a = new gBlog.getAjax();
+        a.categoryGetBlog($('#categoryBlog'))
+        a.blogGetCategory($('#categoryBlog'))
+    })()
+</script>

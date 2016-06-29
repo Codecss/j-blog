@@ -8,7 +8,6 @@ var fs = require('fs');
 var crypto = require('crypto');
 
 
-
 //采用connect-mongo中间件作为Session存储
 var session = require('express-session');
 var mongoose = require('mongoose');
@@ -40,6 +39,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(require('less-middleware')(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'bower_components')));
 
 //session配置
 app.use(session({
