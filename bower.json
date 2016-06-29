@@ -1,0 +1,24 @@
+{
+  "name": "blog",
+  "description": "bower",
+  "main": "",
+  "authors": [
+    "Codecss <jiangwei.john@foxmail.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "blog"
+  ],
+  "homepage": "https://github.com/Codecss/j-blog",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.6"
+  }
+}
