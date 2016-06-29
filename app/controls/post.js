@@ -73,13 +73,9 @@ exports.showUpdate = function (req, res, next) {
 exports.update = function (req, res, next) {
     var id = req.params.id;
     var date = getTime(new Date());
-    var currentUser = req.session.user;
     var blogs = {
-        name: currentUser.username,
         title: req.body.title,
-        intro: req.body.intro,
         category: req.body.category,
-        post: req.body.post,
         date: date
     };
     Post

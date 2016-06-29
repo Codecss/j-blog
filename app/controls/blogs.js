@@ -87,7 +87,8 @@ exports.sortsBlog = function (req, res, next) {
                     '<div class="hr-20"></div> ' +
                     '<div class=""><p>' + blog.intro + '</p></div> ' +
                     '<div class="hr-20"></div> ' +
-                    '<div class="text-right"><a class="btn btn-default" href="blogs/' + blog._id + '" target="_blank">MORE</a> </div></div>';
+                    '<div class="text-right"><a class="btn btn-default" href="blogs/' + blog._id + '" target="_blank">MORE</a> </div>' +
+                    ' <div class="hr-20"></div> <div class="underline"></div></div>';
                 domArray = domArray + dom;
 
             });

@@ -1,46 +1,75 @@
-<% include base/nav.ejs %>
-<div class="login-reg">
-    <div class="login-reg-title"><%= title %></div>
-    <form class="form-edit" name="edit" method="post" action="">
-        <table cellpadding="0" cellspacing="0" border="0">
-            <thead class="form-thead">
-            <tr>
-                <td class="form-index">序号</td>
-                <td class="form-id">_id</td>
-                <td class="form-name">标题</td>
-                <td class="form-edit">操作</td>
-                <td class="form-delete">操作</td>
-            </tr>
-            </thead>
-            <tbody>
-            <% posts.forEach(function (post, index) { %>
-            <tr class="item-id-<%= post._id %>">
-                <td class="form-index"><%= index + 1 %></td>
-                <td class="form-id"><%= post._id %></td>
-                <td class="form-name"><%= post.title %></td>
-                <td class="form-edit"><a href="/edit/update/<%= post._id %>">编辑</a></td>
-                <td class="form-delete"><a class="delete" data-id="<%= post._id %>" href="javascript:;">删除</a></td>
-            </tr>
-            <% }) %>
-            </tbody>
-        </table>
-        <div class="hr-40"></div>
-    </form>
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title><%= title %></title>
+    <% include base/link.ejs %>
+</head>
+<body>
+<div class="container ">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="hr-40"></div>
+        </div>
+    </div>
+    <div class="panel panel-default box-shadow border-none border-radius">
+        <div class="panel-body">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 .col-sm-12 col-xs-12">
+                        <div class="page-header">
+                            <h2><a href="/blogs">LIGHTCOLORS</a><br>
+                                <small>node for blog</small>
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+
+                        <div class="page-header">
+                            <h4><%= title %>
+                                <small class="badge">node for blog</small>
+                            </h4>
+                        </div>
+                        <form class="form-edit" name="edit" method="post" action="">
+                            <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <td class="form-index">序号</td>
+                                    <td class="form-id">_id</td>
+                                    <td class="form-name">标题</td>
+                                    <td class="form-edit">操作</td>
+                                    <td class="form-delete">操作</td>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <% posts.forEach(function (post, index) { %>
+                                <tr class="item-id-<%= post._id %>">
+                                    <td class="form-index"><%= index + 1 %></td>
+                                    <td class="form-id"><%= post._id %></td>
+                                    <td class="form-name"><%= post.title %></td>
+                                    <td class="form-edit"><a href="/edit/update/<%= post._id %>">编辑</a></td>
+                                    <td class="form-delete"><a class="delete" data-id="<%= post._id %>" href="javascript:;">删除</a></td>
+                                </tr>
+                                <% }) %>
+                                </tbody>
+                            </table>
+                            <div class="hr-40"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <% include footer.ejs %>
+        </div>
+    </div>
 </div>
-<script type="text/javascript" src="http://libs.useso.com/js/jquery/2.0.1/jquery.min.js"></script>
-<script type="text/javascript" src="javascripts/account.js"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        $(".nav a").each(function () {
-            $this = $(this);
-            if ($this[0].href == String(window.location)) {
-                $this.addClass("current");
-            }
-            if ($this[0].href === '/') {
-                alert(1)
-            }
-        });
-    });
-</script>
 </body>
 </html>
+<script type="text/javascript" src="http://libs.useso.com/js/jquery/2.0.1/jquery.min.js"></script>
+<script type="text/javascript" src="/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="javascripts/account.js"></script>
