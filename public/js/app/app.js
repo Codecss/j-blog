@@ -1,0 +1,1 @@
+require(["jquery","app/galert","app/gajax"],function(a,e,p){});

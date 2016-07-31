@@ -1,0 +1,118 @@
+@charset "UTF-8";
+
+//css hack
+@ie9-10: ~"\9\0"; // only for IE9&IE10
+@ie8-10: ~"\0"; //only for IE8&IE9&IE10
+@ie6-10: ~"\9"; //only for IE6&IE7&IE8&IE9&IE10
+
+//基础颜色
+@orange: #F35E0E;
+//动画-渐变
+.transition(@css,@time,@speedType,@delay) {
+  transition: @css @time, @speedType, @delay;
+  transition: @css @time @ie9-10;
+  -webkit-transition: @css @time, @speedType, @delay;
+  -o-animation: @css @time, @speedType, @delay;
+  -moz-animation: @css @time, @speedType, @delay;
+}
+
+//基础阴影
+.boxShadow(@o,@t,@th,@f,@A) {
+  box-shadow: @o @t @th rgba(0, 0, 0, @A);
+  -webkit-box-shadow: @o @t @th rgba(0, 0, 0, @A);
+  -o-box-shadow: @o @t @th rgba(0, 0, 0, @A);
+  -moz-box-shadow: @o @t @th rgba(0, 0, 0, @A);
+}
+
+//基础圆角
+.border-radius(@radius) {
+  border-radius: @radius;
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+}
+
+//划过阴影
+.box-shadow () {
+  background: #FFFFFF;
+  border: 1px solid #FFFFFF;
+  border: 1px solid #F0F0F0 @ie8-10;
+  *border: 1px solid #F0F0F0;
+  .boxShadow(0, 2px, 10px, 1px, 0.1);
+}
+
+//基础按钮
+.btn(@width,@height,@lheight,@hwidth,@hheight) {
+  display: inline-block;
+  width: @width;
+  height: @height;
+  line-height: @lheight;
+  text-align: center;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+  background: transparent;
+  color: @orange;
+  border: 1px solid @orange;
+  .transition(color, 0.15s, ease, 0s);
+  position: relative;
+  .border-radius(6px);
+  z-index: 1;
+  &:before,
+  &::before {
+    .border-radius(6px);
+    position: absolute;
+    width: 0;
+    background: @orange;
+    content: "";
+    .transition(width, 0.15s, ease, 0s);
+    z-index: -1;
+    top: -1px;
+    left: -1px;
+    height: @hheight;
+  }
+  &:hover {
+    color: #FFF;
+    color: @orange @ie8-10;
+    color: #FFF @ie9-10;
+    *color: @orange;
+  }
+  &:hover:before {
+    width: @hwidth;
+  }
+}
+
+//间距
+.hr-20 {
+  width: 100%;
+  height: 20px;
+}
+
+.hr-40 {
+  width: 100%;
+  height: 40px;
+}
+
+.hr-60 {
+  width: 100%;
+  height: 60px;
+}
+
+.hide {
+  display: none;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+//下划线
+.underline {
+  width: 100%;
+  height: 1px;
+  background: #CCCCCC;
+}
+
+.inline-block {
+  display: inline-block;
+  margin-right: 4px;
+}
