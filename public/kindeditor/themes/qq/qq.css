@@ -1,4 +1,4 @@
-/* container */
+
 .ke-container-qq {
 	display: block;
 	border: 1px solid #c3c3c3;
@@ -7,7 +7,6 @@
 	margin: 0;
 	padding: 0;
 }
-/* toolbar */
 .ke-container-qq .ke-toolbar {
 	border-bottom: 1px solid #c3c3c3;
 	background-color: #FFFFFF;
@@ -85,7 +84,6 @@
 .ke-container-qq .ke-icon-link{
 	background-position: -319px 1px;
 }
-
 .ke-container-qq .ke-toolbar .ke-outline {
 	cursor: default;
 	padding:0px;
@@ -108,15 +106,12 @@
 .ke-container-qq .ke-toolbar  .ke-disabled {
 	cursor: default;
 }
-
 .ke-colorpicker-qq{
 	background:#fff;
 }
-/* statusbar */
 .ke-container-qq .ke-statusbar {
 	display:none;
 }
-/* menu */
 .ke-menu-qq {
 	border:1px solid #a6a6a6;
 	position:absolute;

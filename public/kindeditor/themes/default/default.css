@@ -1,4 +1,4 @@
-/* common */
+
 .ke-inline-block {
 	display: -moz-inline-stack;
 	display: inline-block;
@@ -32,7 +32,6 @@
 	color: #337FE5;
 	text-decoration: none;
 }
-/* icons */
 .ke-icon-source {
 	background-position: 0px 0px;
 	width: 16px;
@@ -413,7 +412,6 @@
 	width: 16px;
 	height: 16px;
 }
-/* container */
 .ke-container {
 	display: block;
 	border: 1px solid #CCCCCC;
@@ -422,7 +420,6 @@
 	margin: 0;
 	padding: 0;
 }
-/* toolbar */
 .ke-toolbar {
 	border-bottom: 1px solid #CCC;
 	background-color: #F0F0EE;
@@ -481,7 +478,6 @@
 	height: 1px;
 	clear: both;
 }
-/* edit */
 .ke-edit {
 	padding: 0;
 }
@@ -501,7 +497,6 @@
 .ke-edit-textarea:focus {
 	outline: none;
 }
-/* statusbar */
 .ke-statusbar {
 	position: relative;
 	background-color: #F0F0EE;
@@ -529,7 +524,6 @@
 	height: 11px;
 	background-image: url(default.png);
 }
-/* menu */
 .ke-menu {
 	border: 1px solid #A0A0A0;
 	background-color: #F1F1F1;
@@ -585,7 +579,6 @@
 	border-left: 0;
 	border-right: 0;
 }
-/* colorpicker */
 .ke-colorpicker {
 	border: 1px solid #A0A0A0;
 	background-color: #F1F1F1;
@@ -629,7 +622,6 @@
 	padding: 0;
 	border: 0;
 }
-/* dialog */
 .ke-dialog {
 	position: absolute;
 	margin: 0;
@@ -816,7 +808,6 @@
 	font-size: 12px;
 	text-decoration: none;
 }
-/* inputbox */
 .ke-input-text {
 	background-color:#FFFFFF;
 	font-family: "sans serif",tahoma,verdana,helvetica;
@@ -874,7 +865,6 @@
 	opacity: 0;
 	filter: alpha(opacity=0);
 }
-/* tabs */
 .ke-tabs {
 	font: 12px/1 "sans serif",tahoma,verdana,helvetica;
 	border-bottom:1px solid #A0A0A0;
@@ -910,7 +900,6 @@
 	background-color: #FFF;
 	color: #000;
 }
-/* progressbar */
 .ke-progressbar {
 	position: relative;
 	margin: 0;
@@ -937,7 +926,6 @@
 	left: 40%;
 	display: none;
 }
-/* swfupload */
 .ke-swfupload-top {
 	position: relative;
 	margin-bottom: 10px;
@@ -1013,8 +1001,6 @@
 	border: 1px solid #5690D2;
 	background-color: #E9EFF6;
 }
-
-/* emoticons */
 .ke-plugin-emoticons {
 	position: relative;
 }
@@ -1080,7 +1066,6 @@
 	border-style: solid;
 	border-width: 1px;
 }
-/* filemanager */
 .ke-plugin-filemanager-header {
 	width: 100%;
 	margin-bottom: 10px;
@@ -1144,4 +1129,3 @@
 	width: 30%;
 	text-align: center;
 }
-

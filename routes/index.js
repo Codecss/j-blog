@@ -5,22 +5,33 @@ var Index = require('../app/controls/index');
 var User = require('../app/controls/user');
 var Post = require('../app/controls/post');
 var Blogs = require('../app/controls/blogs');
+var Comment = require('../app/controls/comment');
 
 /* GET home page. */
 
-router.get('/', Index.index);
+router.get('/', Blogs.list);
 router.get('/about', Index.about);
 
 /*博客list*/
 router.get('/blogs', Blogs.list);
+router.get('/blogs/page', Blogs.page);
+
+/*search*/
+router.get('/blogs/search',Blogs.search);
 
 /*分类 list*/
 router.get('/blogs/sorts', Blogs.sorts);
-router.get('/blogs/sorts/blogs', Blogs.sortsBlog);
+router.get('/blogs/sorts/category', Blogs.categoryBlog);
+router.get('/blogs/sorts/category/page', Blogs.categoryBlogPage);
+
 /*分类 详情页*/
 router.get('/blogs/sorts/blogs/:_id', Blogs.detail);
 /*详情页*/
 router.get('/blogs/:_id', Blogs.detail);
+
+/*评论*/
+router.post('/blogs/:_id/comment', Comment.commentPost);
+router.get('/blogs/:_id/comment', Comment.commentShow);
 
 
 /*登录*/

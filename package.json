@@ -1,6 +1,6 @@
 {
   "name": "j-blog",
-  "version": "0.0.0",
+  "version": "2.0.0",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
@@ -19,5 +19,15 @@
     "morgan": "~1.6.1",
     "passport-local-mongoose": "*",
     "serve-favicon": "~2.3.0"
+  },
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-cli": "^1.2.0",
+    "grunt-contrib-cssmin": "^1.0.1",
+    "grunt-contrib-htmlmin": "^2.0.0",
+    "grunt-contrib-jshint": "^1.0.0",
+    "grunt-contrib-requirejs": "^1.0.0",
+    "grunt-contrib-uglify": "^2.0.0",
+    "grunt-init": "^0.3.2"
   }
 }

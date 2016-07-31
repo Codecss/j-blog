@@ -1,8 +1,6 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <title><%= title %></title>
     <% include base/link.ejs %>
 </head>
 <body>
@@ -71,5 +69,23 @@
 </body>
 </html>
 <script type="text/javascript" src="http://libs.useso.com/js/jquery/2.0.1/jquery.min.js"></script>
-<script type="text/javascript" src="/bootstrap/dist/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="javascripts/account.js"></script>
+<script>
+    (function () {
+        $('.delete').click(function (e) {
+            var target = $(e.target);
+            var id = target.data('id');
+            var tr = $('.item-id-' + id);
+            if (confirm('确定删除')) {
+                $.ajax({
+                            type: 'DELETE',
+                            url: '/edit?id=' + id
+                        })
+                        .done(function (res) {
+                            if (res.success === 1) {
+                                tr.remove()
+                            }
+                        })
+            }
+        });
+    })();
+</script>

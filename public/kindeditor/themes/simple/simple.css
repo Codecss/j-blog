@@ -1,11 +1,10 @@
-/* container */
+
 .ke-container-simple {
 	display: block;
 	border: 1px solid #CCC;
 	background-color: #FFF;
 	overflow: hidden;
 }
-/* toolbar */
 .ke-container-simple .ke-toolbar {
 	border-bottom: 1px solid #CCC;
 	background-color: #FFF;
@@ -32,7 +31,6 @@
 .ke-container-simple .ke-toolbar  .ke-disabled {
 	cursor: default;
 }
-/* statusbar */
 .ke-container-simple .ke-statusbar {
 	position: relative;
 	background-color: #FFF;
@@ -44,7 +42,6 @@
 	text-align: center;
 	cursor: s-resize;
 }
-/* menu */
 .ke-menu-simple {
 	border: 1px solid #A0A0A0;
 	background-color: #FFF;
@@ -67,7 +64,6 @@
 	border: 1px solid #5690D2;
 	background-color: #FFF;
 }
-/* colorpicker */
 .ke-colorpicker-simple {
 	border: 1px solid #A0A0A0;
 	background-color: #FEFEFE;
